@@ -15,7 +15,7 @@ Gem::Specification.new do |spec|
   spec.email = '79966571+irkode@users.noreply.github.com'
   spec.homepage = 'https://github.com/irkode/irkode.playground'
   spec.license = 'MIT'
-  spec.required_ruby_version = Gem::Requirement.new '>= 2.7.2'
+  spec.required_ruby_version = Gem::Requirement.new '>= 2.6'
 
   spec.metadata = {
     'homepage_uri' => spec.homepage,
