@@ -20,7 +20,7 @@ Gem::Specification.new do |spec|
   spec.metadata = {
     'homepage_uri' => spec.homepage,
     'bug_tracker_uri' => 'https://github.com/irkode/irkode.playground/issues',
-    #'changelog_uri' => 'CHANGELOG.adoc',
+    'changelog_uri' => 'https://github.com/irkode/irkode.playground/blob/master/CHANGELOG.adoc',
     'source_code_uri' => 'https://github.com/irkode/irkode.playground',
   }
 
