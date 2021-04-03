@@ -1,0 +1,11 @@
+--charset UTF-8
+--readme README.adoc
+--no-private
+--hide-api private
+--title "Asciidoctor Extension Templates API Docs"
+--output-dir apidoc
+lib/**/*.rb
+-
+CHANGELOG.adoc
+LICENSE
+NOTICE.adoc

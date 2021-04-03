@@ -1,0 +1,209 @@
+= Asciidoctor Extension Templates for Ruby
+@irkode <https://irkode.github.io/>
+// Settings:
+:experimental:
+:idprefix:
+:idseparator: -
+ifndef::env-github[:icons: font]
+ifdef::env-github,env-browser[]
+:toc: macro
+:toclevels: 1
+endif::[]
+ifdef::env-github[]
+:!toc-title:
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+// Aliases:
+:project-name: Asciidoctor Extension Templates
+:project-handle: asciidoctor-extension_templates
+// Variables:
+:release-version: 0.1.0
+// URIs:
+:url-project: https://github.com/irkode/irkode.playground
+:url-project-repo: {url-project}
+:url-project-issues: {url-project-repo}/issues
+:backend-template: backend_tpl
+:url-asciidoctor: http://asciidoctor.org[Asciidoctor Project]
+:url-asciidoctor-pdf: https://github.com/asciidoctor/asciidoctor-pdf[Asciidoctor PDF]
+:url-rvm: http://rvm.io[RVM]
+
+Asciidoctor Extension Templates is a gem providing basic extension templates for Ruby.
+Templates are directly runnable, and create some dummy content. It  can be your starting point
+to develop your own Asciidoctor extension.
+* just clone the project
+* extract the template you need to a gem. See <<ready-to-rumble>>
+* start coding functionality to your extension gem
+Its aim is to take the pain out starting a new Asciidoctor extension in Ruby.
+
+toc::[]
+
+== Overview
+
+{project-name} is a Set of Asciidoctor Extension Templates which run OOTB.
+These can be the base for your own Asciidoctor extension development project.
+
+The style and layout of the project is based on the one from {url-asciidoctor-pdf}.
+A lot of code is a 100% copy of the code there or at least heavily inspired.
+Logically all that stuff is (c) by OpenDevise Inc. and the Asciidoctor Project.
+
+== Highlights
+
+* Templates are Runnable
+* ready to run tasks for
+** Testruns (rspec)
+** Linting (rubocop)
+** Coverage (simplecov,deep-cover)
+* easy extracting an extension to a new gem project
+
+== Development
+
+NOTE:
+--
+I use {url-rvm} to manage Ruby installation.
+
+so to follow the next steps as is you will need a working rvm flavoured Ruby installation:
+
+* installed rvm
+* installed Ruby
+* installed bundler
+
+This is neither a library nor an application. So you might want to separate it from your global ruby.
+--
+
+=== Retrieve the Source Code
+
+To start with the template just clone the project.
+Simply copy the {url-project-repo}[GitHub repository URL] and pass it to the `git clone` command:
+
+[source,bash,subs=+attributes]
+----
+$ git clone {url-project-repo}
+----
+
+Next, change to the project directory:
+
+[source,bash,subs=attributes+]
+----
+$ cd {project-handle}
+----
+
+=== Install Dependencies
+
+Now activate the ruby version:
+
+[source,bash,subs=attributes+]
+----
+$ rvm use 2.7.2
+# ruby-2.7.2
+----
+
+The dependencies needed to use {project-name} are defined in the [.path]_Gemfile_ at the root of the project.
+Use Bundler to install the dependencies for you.
+
+Then use the `bundle` command to install the project dependencies into the project
+
+[source,bash]
+----
+$ bundle config set --local path '.bundle/gems' #<1>
+$ bundle
+----
+<1> `bundle --path=.bundle/gems` is deprecated
+
+NOTE: You must call `bundle` from the project directory so that it can find the [.path]_Gemfile_.
+
+=== Run a template
+
+Each template provides a running script to demonstrate usage.
+Like with Bundler, you have to run the application from the project directory.
+Assuming all the required gems install properly, verify you can run the `{project-handle}` scripts using Ruby:
+
+[source,bash,subs=attributes+]
+----
+$ bundle exec bin/{project-handle} -v
+# Asciidoctor Extension Templates 0.0.1.dev using Asciidoctor 2.0.12 [https://asciidoctor.org]
+# Runtime Environment (ruby 2.7.2p137 (2020-10-01 revision 5445e04352) [armv7l-linux-eabihf]) (lc:UTF-8 fs:UTF-8 in:UTF-8 ex:UTF-8) <1>
+$ bundle exec bin/{project-handle} -b {backend-template} -o - README.adoc
+# Well done : You plugged in a converter backend names '{backend-template}'
+----
+<1> yes - all done on a Raspberry PI 4
+
+== Ready to Rumble
+
+Now you can start to generate a new Asciidoctor extension gem of your choice.
+Use the provided _Rake_ task to create a new folder holding all the files you need to start with your choosen extension.
+
+The list of available template tasks can be retrieved using `bundle exec rake tpl:`.
+
+[CAUTION]
+No error checking on the arguments, so double check your input
+
+The tasks use the standard Rake argument notation with the following arguments.
+
+target:: destination root where the new gem folder will be created
+short:: extension short name used to build up the extension folder name and files.
+class:: extension class name to use in the coding part
+
+.Example: Backend
+--
+ $ bundle exec rake tpl:
+ # USAGE: tpl:<command>[<args>]
+ #  tpl:backend[target,backend,class] - create a new backend from template
+ $ bundle exec rake tpl:backend['/home/my/coding','my_backend','MyBackend']
+
+Which will create the folder `/home/my/coding/asciidoctor-my_backend` and install needed files there
+
+you now can _chdir_  to `/home/my/coding/asciidoctor-my_backend` and
+
+* adjust template files (especially the gemspec and README)
+* add your extension code
+--
+
+[NOTE]
+License is set to MIT - You are highly encouraged to use this for your extension.
+
+== Coding the Extension
+
+I guess if you follow the `CONTRIBUTING-CODE.adoc` from {url-asciidoctor-pdf} you might be on the right track.
+
+There's a section about _Test_ and _Linting_ and {project-name} follows this and provides the basics for both incl. coverage.
+
+These tasks work also properly in the _Extension Templates_ itself. Use them to check if the template library works on your machine.
+
+.Run tests
+[source,bash,subs=attributes+]
+----
+$ bundle exec rake spec
+$ bundle exec rspec -fd
+----
+
+.Run Linter
+----
+$ bundle exec rake lint
+----
+
+more details on that can be found in their guide.
+
+[[resources,Links]]
+
+== Author
+
+{project-name} was assembled and tweaked by @irkode based on the project layout of {url-asciidoctor-pdf}
+written by https://github.com/mojavelinux[Dan Allen] and https://github.com/graphitefriction[Sarah White]
+of OpenDevise Inc. on behalf of the Asciidoctor Project.
+
+== Copyright
+
+Copyright (C) 2021-present @irkode
+
+Lot of the code, project layout, ... taken more or less from the {url-asciidoctor-pdf}  project.
+In fact this is the goal of _Asciidoctor Extension Templates_: As close to a real extension as possible
+All that is: Copyright (c) 2014-present OpenDevise Inc. and the {url-asciidoctor}.
+
+Free use of this software is granted under the terms of the MIT License.
+
+For the full text of the license, see the link:LICENSE[] file.
+Refer to the <<NOTICE.adoc#,NOTICE>> file for information about third-party Open Source software in use.

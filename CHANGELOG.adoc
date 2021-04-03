@@ -1,0 +1,20 @@
+= {project-name} Changelog
+:project-name: Asciidoctor Extension Templates for Ruby
+:project-url: https://github.com/irkode/irkode.playground
+:project-url-commits: {project-url}/commits/main
+
+This document provides a high-level view of the changes to the {project-url}[{project-name}] by release.
+For a detailed view of what has changed, refer to the {project-url-commits}[commit history].
+
+
+== Unreleased
+
+Enhancements::
+* added yard documentation
+* added backend template
+
+Bug Fixes::
+
+Build / Infrastructure::
+
+* created based on https://github.com/asciidoctor/asciidoctor-pdf[asciidoctor-pdf]

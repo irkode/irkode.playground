@@ -1,0 +1,11 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+if File.file? asciidoctor_extension_templates = (File.expand_path '../lib/asciidoctor/extension_templates.rb', __dir__)
+  require asciidoctor_extension_templates
+else
+  require 'asciidoctor/extension_templates'
+end
+
+puts %(Asciidoctor Extension Templates #{Asciidoctor::ExtensionTemplates::VERSION})
+puts 'This is an Extension Template library. Please check README.adoc.'

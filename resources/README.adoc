@@ -1,0 +1,33 @@
+= TODO: Enter your Headline
+
+Asciidoctor {class-name} is a gem providing ...
+In this directory, you'll find the files you need to be able to package into a gem.
+Add your Ruby code to the folder `lib/{short-name}`.
+
+TODO: Delete this and the text above, and describe your gem
+
+== Installation
+
+TODO: correct the installation text according to the type of extension and your changes
+
+```ruby
+gem 'asciidoctor-{short-name}'
+```
+
+And then execute:
+
+    $ bundle install
+
+Or install it yourself as:
+
+    $ gem install 'asciidoctor-{short-name}'
+
+== Usage
+
+TODO: Write usage instructions here
+
+== License
+
+The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+
+Refer to the <<NOTICE.adoc#,NOTICE>> file for information about third-party Open Source software in use.

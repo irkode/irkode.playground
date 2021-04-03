@@ -1,0 +1,32 @@
+= TODO Enter your Headline
+
+Copyright (C) YEAR ...
+
+This product is licensed under the MIT License (the "License").
+You may not use this product except in compliance with the License.
+You may obtain a copy of the License at:
+
+   http://opensource.org/licenses/MIT
+
+Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and limitations under the License.
+
+== Third-party licensed work
+
+Asciidoctor::
+  Copyright (C) 2012-2021 Dan Allen, Sarah White, Ryan Waldron, and the individual contributors to Asciidoctor.
+  Use of this software is granted under the terms of the MIT License.
+
+  - https://asciidoctor.org/
+
+Asciidoctor Extension Templates::
+  Copyright (C) 2021 @irkode
+  Use of this software is granted under the terms of the MIT License.
+
+ - https://github.com/irkode/irkode.playground
+
+Asciidoctor PDF::
+  Copyright (C) 2014-present OpenDevise Inc. and the Asciidoctor Project.
+  Free use of this software is granted under the terms of the MIT License.
+
+  - https://github.com/asciidoctor/asciidoctor-pdf

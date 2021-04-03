@@ -1,0 +1,30 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+if File.file? asciidoctor_backend_tpl = (File.expand_path '../lib/asciidoctor/backend_tpl.rb', __dir__)
+  require asciidoctor_backend_tpl
+else
+  require 'asciidoctor/backend_tpl'
+end
+require 'asciidoctor/cli'
+
+options = Asciidoctor::Cli::Options.new backend: 'backend_tpl'
+
+# FIXME: provide an API in Asciidoctor for sub-components to print version information
+# FIXME: ambiguous use of -v depending on existance of other arguments
+unless ARGV != ['-v'] && (ARGV & ['-V', '--version']).empty?
+  $stdout.write %(Asciidoctor Backend Template #{Asciidoctor::BackendTemplate::VERSION} using )
+  options.print_version
+  exit 0
+end
+
+# FIXME: This is a really bizarre API. Please make me simpler.
+case (result = options.parse! ARGV)
+when Integer
+  exit result
+else
+  invoker = Asciidoctor::Cli::Invoker.new options
+  GC.start
+  invoker.invoke!
+  exit invoker.code
+end
