@@ -34,9 +34,13 @@ endif::[]
 Asciidoctor Extension Templates is a gem providing basic extension templates for Ruby.
 Templates are directly runnable, and create some dummy content. It  can be your starting point
 to develop your own Asciidoctor extension.
+
 * just clone the project
+
 * extract the template you need to a gem. See <<ready-to-rumble>>
+
 * start coding functionality to your extension gem
+
 Its aim is to take the pain out starting a new Asciidoctor extension in Ruby.
 
 toc::[]
